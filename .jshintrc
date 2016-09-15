@@ -1,0 +1,45 @@
+{
+  "bitwise": false,
+  "curly": false,
+  "eqeqeq": true,
+  "forin": true,
+  "freeze": false,
+  "funcscope":false,
+  "futurehostile":false,
+  "iterator":false,
+  "latedef":"nofunc",
+  "noarg":true,
+  "nocomma":true,
+  "nonew":true,
+  "notypeof":false,
+  "strict":true,
+  "undef":false,
+  "unused":false,
+  "varstmt":false,
+
+  "newcap": true,
+
+  "evil":true,
+  "debug": true,
+  "boss": true,
+  "eqnull": true,
+
+  "browser": true,
+  "smarttabs": true,
+  "globals": {
+    "angular": true,
+    "console": true,
+    "$": true,
+    "_":true,
+    "moment": true,
+    "describe": true,
+    "beforeEach": true,
+    "module": true,
+    "inject": true,
+    "it": true,
+    "expect": true,
+    "xdescribe": true,
+    "xit": true,
+    "spyOn": true
+  }
+}
