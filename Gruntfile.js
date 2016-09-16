@@ -36,7 +36,7 @@ module.exports = function(grunt) {
         'babel',
         'ngAnnotate',
 
-        //'copy:vendor',
+        'copy:vendor',
         'copy:build',
 
         'uglify',

@@ -4,20 +4,23 @@
   "description": "",
   "main": "web.js",
   "scripts": {
-    "postinstall": "npm run bower && npm run build",
+    "postinstall": "npm run bower",
     "bower": "bower install",
-    "start": "npm run server",
+    "start": "npm run build",
+    "prebuild":"npm install",
     "build": "grunt build",
     "predev": "npm install",
     "dev": "grunt dev",
+    "preserver":"npm run build",
     "server":"node web.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
-    "bower": "^1.7.9",
-
+    "bower": "^1.7.9"
+  },
+  "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
     "concat": "0.0.1-security",
     "copy": "^0.3.0",
