@@ -6,16 +6,15 @@
   "scripts": {
     "postinstall": "npm run bower",
     "bower": "bower install",
-    "start": "npm run build",
-    "prebuild":"npm install",
-    "build": "grunt build",
     "predev": "npm install",
     "dev": "grunt dev",
+    "build": "grunt build",
     "preserver":"npm run build",
-    "server":"node web.js"
+    "server":"node web.js",
+    "start": "npm run server"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
     "bower": "^1.7.9"
