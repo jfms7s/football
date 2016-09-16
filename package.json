@@ -8,7 +8,7 @@
     "bower": "bower install",
     "predev": "npm install",
     "dev": "grunt dev",
-    "prebuild":"npm install",
+    "prebuild":"npm install && copy node_modules\\@angular\\router\\angular1 src\\bower_components\\angular\\",
     "build": "grunt build",
     "server":"node web.js",
     "start": "npm run server"
@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",
+    "@angular/router": "^0.2.0",
     "concat": "0.0.1-security",
     "copy": "^0.3.0",
     "globby": "^4.0.0",
