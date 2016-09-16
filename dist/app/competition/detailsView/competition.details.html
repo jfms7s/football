@@ -40,11 +40,11 @@
         <tr>
             <th sort="position" class="text-center">Position</th>
             <th sort="teamName" class="text-center">Team</th>
-            <th class="text-center">Goals</th>
-            <th class="text-center">W-D-L</th>
+            <th class="text-center hidden-xs">Goals</th>
+            <th class="text-center hidden-xs">W-D-L</th>
             <th sort="playedGames" class="text-center">Games</th>
-            <th class="text-center">Home</th>
-            <th class="text-center">Away</th>
+            <th class="text-center hidden-xs">Home</th>
+            <th class="text-center hidden-xs">Away</th>
             <th sort="playedGames.points" class="text-center">Points</th>
         </tr>
         </thead>
@@ -54,12 +54,12 @@
                 <img alt="team-logo" width="30px" ng-src="{{stanging.crestURI}}"/>
                 <label ng-bind="stanging.teamName"></label>
             </td>
-            <td class="valign">
+            <td class="valign hidden-xs">
                 <label class="text-success" ng-bind="stanging.goals"></label>
                 -
                 <label class="text-danger" ng-bind="stanging.goalsAgainst"></label>
             </td>
-            <td class="valign">
+            <td class="valign hidden-xs">
                 <label class="text-success" ng-bind="stanging.wins"></label>
                 -
                 <label class="text-warning" ng-bind="stanging.draws"></label>
@@ -67,7 +67,7 @@
                 <label class="text-danger" ng-bind="stanging.losses"></label>
             </td>
             <td class="valign" ng-bind="stanging.playedGames"></td>
-            <td class="valign" >
+            <td class="valign hidden-xs" >
                 <div>
                     <label class="text-success" ng-bind="stanging.home.wins"></label>
                     -
@@ -81,7 +81,7 @@
                     <label class="text-danger" ng-bind="stanging.home.goalsAgainst"></label>
                 </div>
             </td>
-            <td class="valign">
+            <td class="valign hidden-xs">
                 <div>
                     <label class="text-success" ng-bind="stanging.away.wins"></label>
                     -
