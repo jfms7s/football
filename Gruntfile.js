@@ -29,16 +29,6 @@ module.exports = function(grunt) {
         'watch'
     ]);
 
-    grunt.registerTask('dev',[
-        'htmlhint',
-        'jshint',//Verify html and js files for errors
-
-        'wiredep',
-        'includeSource:build',
-        'connect',
-        'watch'
-    ]);
-
     grunt.registerTask('build',[
         'clean',
         'mkdir',
@@ -46,7 +36,7 @@ module.exports = function(grunt) {
         'babel',
         'ngAnnotate',
 
-        'copy:vendor',
+        //'copy:vendor',
         'copy:build',
 
         'uglify',
