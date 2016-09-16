@@ -10,3 +10,5 @@ Run the following commands
 - npm install
 - npm run build
 - npm run server
+
+[Heroku](https://football7s.herokuapp.com/)
