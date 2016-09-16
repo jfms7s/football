@@ -8,8 +8,8 @@
     "bower": "bower install",
     "predev": "npm install",
     "dev": "grunt dev",
+    "prebuild":"npm install",
     "build": "grunt build",
-    "preserver":"npm run build",
     "server":"node web.js",
     "start": "npm run server"
   },
