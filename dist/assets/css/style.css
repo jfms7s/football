@@ -1,5 +1,53 @@
+html,body{
+  color: white;
+  height: 100%;
+}
+team-details > div{
+  padding-top: 30px;
+}
 body {
   padding-top: 50px;
+  background: url(../img/backgrounds.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body:after{
+  top:0;
+  background-color: rgba(1,1,1,0.6);
+  position: fixed;
+  height: 100%;
+  content:"";
+  z-index:-1;
+}
+table th.sorted:after {
+  content: "\f0dd";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+}
+table th.sorted-reverse:after {
+  content: "\f0de";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+}
+table th.un-sorted:after {
+  content: "\f0dc";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+ul{
+  color:black;
+}
+table {
+  color : black;
+  background: white;
 }
 app {
   padding: 40px 15px;
@@ -7,4 +55,35 @@ app {
 }
 .valign{
   vertical-align: middle !important;
+}
+.right{
+  float:right;
+}
+.league-links > a{
+  margin-left: 10px;
+}
+
+app{
+  position: relative;
+  padding-top: 0;
+}
+
+[ng-link] * { cursor: pointer  }
+
+
+body:after {
+  left: 2%;
+  width: 96%;
+}
+
+.nav-links{
+  position: fixed;
+  top: 8px;
+  right: 10px;
+  z-index: 9999;
+}
+@media (max-width: 768px) {
+  .nav-links{
+    right: 70px;
+  }
 }

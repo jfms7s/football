@@ -5,11 +5,12 @@ angular.module('app.team')
         controller: ["$q",'$rootRouter','TeamService','PlayerService',
             function ($q , $rootRouter,  TeamService , PlayerService) {
                 var ctrl = this;
-
+                ctrl.teamId=null;
                 ctrl.team = null;
                 ctrl.teamPlayers = null;
 
                 ctrl.$routerOnActivate = function(next) {
+                    ctrl.teamId = next.params.id;
                     return $q.all([
                         TeamService.get(next.params.id).then(team=>{
                             ctrl.team = team;

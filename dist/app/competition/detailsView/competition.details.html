@@ -1,3 +1,7 @@
+<div class="nav-links">
+    <a ng-link="['FixtureListByCompetition',{competitionId:vm.competitionId}]" class="btn btn-success">Fixtures</a>
+    <a ng-link="['CompetitionTeams',{id:vm.competitionId}]" class="btn btn-danger">Teams</a>
+</div>
 <div class="row">
     <h2 class="col-xs-12">{{vm.competition.caption}}</h2>
 </div>
@@ -34,17 +38,17 @@
     <table ng-if="vm.leagueTable.standing" class="table col-xs-12">
         <thead>
         <tr>
-            <th class="text-center">Position</th>
-            <th class="text-center">Team</th>
+            <th sort="position" class="text-center">Position</th>
+            <th sort="teamName" class="text-center">Team</th>
             <th class="text-center">Goals</th>
             <th class="text-center">W-D-L</th>
-            <th class="text-center">Games</th>
+            <th sort="playedGames" class="text-center">Games</th>
             <th class="text-center">Home</th>
             <th class="text-center">Away</th>
-            <th class="text-center">Points</th>
+            <th sort="playedGames.points" class="text-center">Points</th>
         </tr>
         </thead>
-        <tbody><tr ng-repeat="stanging in vm.leagueTable.standing" ng-link="['TeamDetails',{id:stanging.teamId}]">
+        <tbody><tr ng-repeat="stanging in vm.leagueTable.standing|orderBy:sort.sortType:sort.sortReverse" ng-link="['TeamDetails',{id:stanging.teamId}]">
             <td class="valign" ng-bind="stanging.position"></td>
             <td class="valign">
                 <img alt="team-logo" width="30px" ng-src="{{stanging.crestURI}}"/>
@@ -98,16 +102,14 @@
     <table ng-if="vm.leagueTable.standings" class="table col-xs-12">
         <thead>
         <tr>
-            <th class="text-center">Rank</th>
-            <th class="text-center">Id</th>
-            <th class="text-center">Team</th>
-            <th class="text-center">Goals</th>
-            <th class="text-center">Games</th>
+            <th sort="rank" class="text-center">Rank</th>
+            <th sort="team" class="text-center">Team</th>
+            <th sort="goalDifference" class="text-center">Goals</th>
+            <th sort="playedGames" class="text-center">Games</th>
         </tr>
         </thead>
-        <tbody><tr ng-repeat="stanging in vm.leagueTable.standings[vm.group]" ng-link="['TeamDetails',{id:stanging.teamId}]">
+        <tbody><tr ng-repeat="stanging in vm.leagueTable.standings[vm.group]|orderBy:sort.sortType:sort.sortReverse" ng-link="['TeamDetails',{id:stanging.teamId}]">
             <td class="valign" ng-bind="stanging.rank"></td>
-            <td class="valign" ng-bind="stanging.teamId"></td>
             <td class="valign">
                 <img alt="team-logo" width="30px" ng-src="{{stanging.crestURI}}"/>
                 <label ng-bind="stanging.team"></label>

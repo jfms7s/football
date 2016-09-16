@@ -5,6 +5,7 @@ angular.module('app.competition')
         controller: ["$q",'$rootRouter','CompetitionService','LeagueTableService',
             function ($q , $rootRouter, CompetitionService , LeagueTableService) {
                 var ctrl = this;
+                ctrl.competitionId = null;
                 ctrl.competition = null;
                 ctrl.leagueTable = null;
                 ctrl.groups = null;
@@ -15,6 +16,7 @@ angular.module('app.competition')
                 ctrl.filterByMatchDay = filterByMatchDay;
 
                 ctrl.$routerOnActivate = function(next) {
+                    ctrl.competitionId = next.params.id;
                     return $q.all([
                         CompetitionService.get(next.params.id).then(competition=>{
                             ctrl.competition = competition;

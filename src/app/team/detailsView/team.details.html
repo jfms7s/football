@@ -1,6 +1,10 @@
+
 <div class="row">
+    <div class="nav-links">
+        <a ng-link="['FixtureListByTeam',{teamId:vm.teamId}]" class="btn btn-success">Fixtures</a>
+    </div>
     <div class="col-lg-6">
-        <img width="50%" alt="team-img" ng-src="{{vm.team.crestUrl}}"/>
+        <img class="img-thumbnail img-responsive" width="50%" alt="team-img" ng-src="{{vm.team.crestUrl}}" onerror="this.src='assets/img/NoLogo.jpg'"/>
     </div>
     <div class="col-lg-6">
         <h2 class="col-xs-12">{{vm.team.name}}</h2>
@@ -22,23 +26,23 @@
     <table class="table col-xs-12">
         <thead>
         <tr>
-            <th class="text-center">Number</th>
-            <th class="text-center">Name</th>
-            <th class="text-center">Birthday</th>
-            <th class="text-center">Nationality</th>
-            <th class="text-center">Position</th>
-            <th class="text-center">Market Value</th>
-            <th class="text-center">Contract End</th>
+            <th sort="jerseyNumber" class="text-center">Number</th>
+            <th sort="name" class="text-center">Name</th>
+            <th sort="dateOfBirth" class="text-center hidden-xs">Birthday</th>
+            <th sort="nationality" class="text-center hidden-xs">Nationality</th>
+            <th sort="position" class="text-center">Position</th>
+            <th sort="marketValue" class="text-center">Market Value</th>
+            <th sort="contractUntil" class="text-center hidden-xs">Contract End</th>
         </tr>
         </thead>
-        <tbody><tr ng-repeat="players in vm.teamPlayers.players">
+        <tbody><tr ng-repeat="players in vm.teamPlayers.players|orderBy:sort.sortType:sort.sortReverse">
             <td class="valign" ng-bind="players.jerseyNumber"></td>
             <td class="valign" ng-bind="players.name"></td>
-            <td class="valign" ng-bind="players.dateOfBirth"></td>
-            <td class="valign" ng-bind="players.nationality"></td>
+            <td class="valign hidden-xs" ng-bind="players.dateOfBirth"></td>
+            <td class="valign hidden-xs" ng-bind="players.nationality"></td>
             <td class="valign" ng-bind="players.position"></td>
             <td class="valign" ng-bind="players.marketValue||'?€'"></td>
-            <td class="valign" ng-bind="players.contractUntil"></td>
+            <td class="valign hidden-xs" ng-bind="players.contractUntil"></td>
         </tr></tbody>
     </table>
 </div>
