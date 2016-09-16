@@ -28,7 +28,7 @@
                     timeFrame,
                     matchday
                 }
-            }).then(response =>response.data);;
+            }).then(response =>response.data);
         }
 
         /**

@@ -17,12 +17,14 @@
 				}
 			],
 			$routeConfig: [
-				{ path: '/leagues'					,name:"CompetitionList"			, component: 'competitionList' 		,useAsDefault: true },
-				{ path: '/leagues/:id'				,name:"CompetitionDetails"		, component: 'competitionDetails' 	},
-				{ path: '/leagues/:id/:matchDay'	,name:"CompetitionDetailsbyDay"	, component: 'competitionDetails' 	},
-				{ path: '/leagues/:id/teams'		,name:"CompetitionTeams"		, component: 'teamList' 			},
-				{ path: '/teams/:id'				,name:"TeamDetails"				, component: 'teamDetails' 			},
-				{ path: '/fixture'					,name:"FixtureList"				, component: 'fixtureList' 			},
+				{ path: '/leagues'							,name:"CompetitionList"			, component: 'competitionList' 		,useAsDefault: true },
+				{ path: '/leagues/:id'						,name:"CompetitionDetails"		, component: 'competitionDetails' 	},
+				{ path: '/leagues/:id/:matchDay'			,name:"CompetitionDetailsbyDay"	, component: 'competitionDetails' 	},
+				{ path: '/leagues/:id/teams'				,name:"CompetitionTeams"		, component: 'teamList' 			},
+				{ path: '/teams/:id'						,name:"TeamDetails"				, component: 'teamDetails' 			},
+				{ path: '/fixture'							,name:"FixtureList"				, component: 'fixtureList' 			},
+				{ path: '/teams/:teamId/fixture'			,name:"FixtureListByTeam"		, component: 'fixtureList' 			},
+				{ path: '/leagues/:competitionId/fixture'	,name:"FixtureListByCompetition", component: 'fixtureList' 			},
 			]
 		});
 })();
