@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-6">
+        <img width="50%" alt="team-img" ng-src="{{vm.team.crestUrl}}"/>
+    </div>
+    <div class="col-lg-6">
+        <h2 class="col-xs-12">{{vm.team.name}}</h2>
+        <dl class="dl-horizontal">
+            <dt>Code</dt>
+            <dd ng-bind="vm.team.code"></dd>
+            <dt ng-hide="!vm.team.shortName">Short Name</dt>
+            <dd ng-hide="!vm.team.shortName" ng-bind="vm.team.shortName"></dd>
+            <dt ng-hide="!vm.team.squadMarketValue">Market Value</dt>
+            <dd ng-hide="!vm.team.squadMarketValue" ng-bind="vm.team.squadMarketValue"></dd>
+        </dl>
+    </div>
+</div>
+<div class="row" ng-if="!vm.teamPlayers.players.length"><h2 class="col-xs-12">No players to display</h2></div>
+<div class="row" ng-if="vm.teamPlayers.players.length">
+    <h2 class="col-xs-12">Players</h2>
+</div>
+<div class="row" ng-if="vm.teamPlayers.players.length">
+    <table class="table col-xs-12">
+        <thead>
+        <tr>
+            <th class="text-center">Number</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Birthday</th>
+            <th class="text-center">Nationality</th>
+            <th class="text-center">Position</th>
+            <th class="text-center">Market Value</th>
+            <th class="text-center">Contract End</th>
+        </tr>
+        </thead>
+        <tbody><tr ng-repeat="players in vm.teamPlayers.players">
+            <td class="valign" ng-bind="players.jerseyNumber"></td>
+            <td class="valign" ng-bind="players.name"></td>
+            <td class="valign" ng-bind="players.dateOfBirth"></td>
+            <td class="valign" ng-bind="players.nationality"></td>
+            <td class="valign" ng-bind="players.position"></td>
+            <td class="valign" ng-bind="players.marketValue||'?€'"></td>
+            <td class="valign" ng-bind="players.contractUntil"></td>
+        </tr></tbody>
+    </table>
+</div>

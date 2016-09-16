@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     vendorDeps.css  = (vendorDeps.css ||[]).map(refactorPaths);
     vendorDeps.less = (vendorDeps.less||[]).map(refactorPaths);
 
-    var appFiles = globby.sync(["src/External/**/*.js","src/appValidoo/**/*.js","!src/appValidoo/**/*.spect.js"],{nosort:true});
+    var appFiles = globby.sync(["src/app/**/*.js","!src/app/**/*.spec.js"],{nosort:true});
 
     function refactorPaths(ele) {
         return ele.replace(/.*\\src(\\.*?\\)?/,"");
@@ -28,6 +28,34 @@ module.exports = function(grunt) {
         'connect',
         'watch'
     ]);
+
+    grunt.registerTask('dev',[
+        'htmlhint',
+        'jshint',//Verify html and js files for errors
+
+        'wiredep',
+        'includeSource:build',
+        'connect',
+        'watch'
+    ]);
+
+    grunt.registerTask('build',[
+        'clean',
+        'mkdir',
+        'concat',
+        'babel',
+        'ngAnnotate',
+
+        'copy:vendor',
+        'copy:build',
+
+        'uglify',
+
+        'wiredep',
+        'copy:dist',
+        'includeSource:dist',
+    ]);
+
 
     grunt.registerTask('default', []);
 
@@ -66,22 +94,15 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        filerev: {
+        babel: {
             options: {
-                algorithm: 'md5',
-                length: 8
+                sourceMap: true,
+                presets: ['es2015']
             },
-            css: {
-                expand: true,
-                cwd:".tmp/assets/css/",
-                src: ['**/*.min.css'],
-                dest:".tmp/assets/css/"
-            },
-            js: {
-                expand: true,
-                cwd:".tmp/assets/js/",
-                src: ['**/*.min.js' ],
-                dest:".tmp/assets/js/"
+            dist: {
+                files: {
+                    '.tmp/appValidoo/app.js': '.tmp/appValidoo/app.js'
+                }
             }
         },
         ngAnnotate: {
@@ -99,7 +120,7 @@ module.exports = function(grunt) {
                 },
                 expand  : true,
                 cwd     : ".tmp",
-                src     : ["assets/**/*.js", "!**/*.min.js"],
+                src     : ["assets/**/*.js", "!assets/**/*.min.js"],
                 dest    : ".tmp",
                 ext     : '.min.js'
             }
@@ -135,7 +156,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd : "src/assets/css/",
-                        src : "**/*.min.css",
+                        src : "**/*.css",
                         dest: ".tmp/assets/css/"
                     },
                     {
@@ -182,7 +203,7 @@ module.exports = function(grunt) {
                     {
                         expand: true,
                         cwd : ".tmp/assets/js/",
-                        src : "**/*",
+                        src : ["**/*.min.js","**/*.map"],
                         dest: "dist/assets/js/"
                     },
                     {

@@ -7,8 +7,13 @@
     "postinstall": "npm run bower",
     "bower": "bower install",
     "postbower": "copy node_modules\\@angular\\router\\angular1 src\\bower_components\\angular\\",
-
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build",
+    "prebuild":"npm install",
+    "build": "grunt build",
+    "predev": "npm install",
+    "dev": "grunt dev",
+    "preserver":"npm run build",
+    "server":"node web.js"
   },
   "author": "",
   "license": "ISC",
@@ -17,11 +22,13 @@
     "express": "^4.14.0"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.14.0",
     "bower": "^1.7.9",
     "concat": "0.0.1-security",
     "copy": "^0.3.0",
     "globby": "^4.0.0",
     "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^0.7.0",
     "grunt-contrib-compress": "^1.1.1",
