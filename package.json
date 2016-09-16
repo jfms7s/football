@@ -4,14 +4,12 @@
   "description": "",
   "main": "web.js",
   "scripts": {
-    "postinstall": "npm run bower",
+    "postinstall": "npm run bower && npm run build",
     "bower": "bower install",
     "start": "npm run build",
-    "prebuild":"npm install",
     "build": "grunt build",
     "predev": "npm install",
     "dev": "grunt dev",
-    "preserver":"npm run build",
     "server":"node web.js"
   },
   "author": "",
