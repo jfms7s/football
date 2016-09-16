@@ -22,7 +22,7 @@
                 params  : {
                     season
                 }
-            });
+            }).then(response =>response.data);
         }
 
         /**
@@ -34,7 +34,7 @@
             return $http({
                 method  :"GET",
                 url     :`${Configs.apiUrl}/v1/competitions/${id}`,
-            });
+            }).then(response =>response.data);
         }
     }
 

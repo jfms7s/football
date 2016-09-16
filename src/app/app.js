@@ -2,10 +2,11 @@
     'use strict';
     angular.module('app',[
         'ng',
-        'ngMaterial',
+        'ui.bootstrap',
         'ngComponentRouter',
 
-        'app.standings',
-
+        'app.team',
+        'app.competition',
+        'app.fixture'
     ]);
 })();

@@ -22,7 +22,16 @@
                 params  :{
                     matchday
                 }
-            });
+            }).then(response =>response.data)
+                .then(leagueTable=>{
+                    if(leagueTable.standing){
+                        leagueTable.standing=leagueTable.standing.map(ele=>{
+                            ele.teamId=(+ele._links.team.href.match(/\/(\d+)/)[1]);
+                            return ele;
+                        })
+                    }
+                    return leagueTable;
+                });
         }
     }
 

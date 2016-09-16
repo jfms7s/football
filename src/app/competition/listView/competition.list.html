@@ -1,0 +1,14 @@
+<div class="row">
+    <h1 class="col-xs-12">Leagues</h1>
+</div>
+<div class="row">
+    <ul class="list-group col-xs-12">
+        <li ng-repeat="competition in vm.competitions" class="list-group-item row">
+            <span class="label label-success col-xs-1" ng-bind="competition.league"></span><span class="col-xs-7 text-left" ng-bind="competition.caption"></span>
+            <span class="col-lg-4 text-right">
+                <a ng-link="['CompetitionDetails',{id:competition.id}]" class="right btn btn-info">Standings</a>
+                <a ng-link="['CompetitionTeams',{id:competition.id}]" class="right btn btn-success btn">Teams</a>
+            </span>
+        </li>
+    </ul>
+</div>

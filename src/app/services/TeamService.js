@@ -19,7 +19,16 @@
             return $http({
                 method  : "GET",
                 url     : `${Configs.apiUrl}/v1/competitions/${id}/teams`
-            });
+            }).then(response =>response.data)
+                .then(competitionTeams=>{
+
+                    competitionTeams.teams=competitionTeams.teams.map(team=>{
+                        team.teamId=(+team._links.self.href.match(/\/(\d+)/)[1]);
+                        return team;
+                    });
+
+                    return competitionTeams;
+                });
         }
 
         /**
@@ -31,7 +40,7 @@
             return $http({
                 method  : "GET",
                 url     : `${Configs.apiUrl}/v1/teams/${id}`
-            });
+            }).then(response =>response.data);
         }
     }
 

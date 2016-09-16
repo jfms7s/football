@@ -7,8 +7,9 @@ module.exports = function(grunt) {
     var globby = require('globby');
     var vendorDeps = (require('wiredep')({dependencies: true,devDependencies: true}));
 
-    vendorDeps.js   = vendorDeps.js  .map(refactorPaths);
-    vendorDeps.css  = vendorDeps.css .map(refactorPaths);
+    vendorDeps.js   = (vendorDeps.js  ||[]).map(refactorPaths);
+    vendorDeps.css  = (vendorDeps.css ||[]).map(refactorPaths);
+    vendorDeps.less = (vendorDeps.less||[]).map(refactorPaths);
 
     var appFiles = globby.sync(["src/External/**/*.js","src/appValidoo/**/*.js","!src/appValidoo/**/*.spect.js"],{nosort:true});
 

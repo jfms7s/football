@@ -28,7 +28,7 @@
                     timeFrame,
                     matchday
                 }
-            });
+            }).then(response =>response.data);;
         }
 
         /**
@@ -48,7 +48,7 @@
                     season,
                     venue
                 }
-            });
+            }).then(response =>response.data);
         }
         /**
          *
@@ -64,7 +64,17 @@
                     timeFrame,
                     league
                 }
-            });
+            }).then(response =>response.data)
+                .then(dto=>{
+                    dto.fixtures=dto.fixtures.map(fixture=>{
+                        fixture.competition = (+fixture._links.competition  .href.match(/\/(\d+)/)[1]);
+                        fixture.homeTeam    = (+fixture._links.homeTeam     .href.match(/\/(\d+)/)[1]);
+                        fixture.awayTeam    = (+fixture._links.awayTeam     .href.match(/\/(\d+)/)[1]);
+                        return fixture;
+                    });
+
+                    return dto;
+                });
         }
 
         /**
@@ -80,7 +90,7 @@
                 params  : {
                     head2head
                 }
-            });
+            }).then(response =>response.data);
         }
     }
 
