@@ -10,8 +10,8 @@
             <th sort="date" class="text-center">Date</th>
             <th sort="matchday" class="text-center">Match Day</th>
             <th sort="status" class="text-center">Status</th>
-            <th class="text-center">Goals</th>
-            <th class="text-center">Odds</th>
+            <th class="text-center hidden-xs">Goals</th>
+            <th class="text-center hidden-xs">Odds</th>
         </tr>
         </thead>
         <tbody><tr ng-repeat="fixture in vm.fixtures.fixtures|orderBy:sort.sortType:sort.sortReverse">
@@ -19,15 +19,15 @@
                 <p ng-link="['TeamDetails',{id:fixture.homeTeam}]" class="text-success" ng-bind="fixture.homeTeamName"></p>
                 <p ng-link="['TeamDetails',{id:fixture.awayTeam}]" class="text-danger" ng-bind="fixture.awayTeamName"></p>
             </td>
-            <td class="valign" ng-bind="fixture.date"></td>
+            <td class="valign" ng-bind="fixture.date|date:'dd/MM/yy hh:mm'"></td>
             <td class="valign" ng-bind="fixture.matchday" ng-link="['CompetitionDetails',{id:fixture.competition}]"></td>
             <td class="valign" ng-bind="fixture.status"></td>
-            <td class="valign" >
+            <td class="valign hidden-xs" >
                 <label class="text-success" ng-bind="fixture.result.homeTeam||0"></label>
                 -
                 <label class="text-danger" ng-bind="fixture.result.goalsAwayTeam||0"></label>
             </td>
-            <td class="valign">
+            <td class="valign hidden-xs">
                 <label class="text-success" ng-bind="fixture.odds.homeWin||0"></label>
                 -
                 <label class="text-warning" ng-bind="fixture.odds.draw||0"></label>
